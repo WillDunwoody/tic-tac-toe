@@ -40,7 +40,12 @@ const displayController = (() => {
         
         gridBox.forEach(element => {
             element.addEventListener('click', function() {
-                console.log(gameController.playerChoice())
+                if(gameBoard.gameArray[this.id] != '') return
+                if(gameController.playerChoice() == 'x') {
+                    element.classList.add('blue')
+                } else if(gameController.playerChoice() == 'o') {
+                    element.classList.add('red')
+                }
                 gameBoard.gameArray.splice(this.id, 1, gameController.playerChoice())
                 gameController.playRound()
                 updateBoard()
@@ -55,5 +60,3 @@ const displayController = (() => {
         }
     }
 })()
-
-
