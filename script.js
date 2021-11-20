@@ -30,82 +30,30 @@ const gameController = (() => {
     }
 
     const checkForWinner = () => {  
-        let winArr = []
-        const checkWinArr = () => {
-            if(winArr.length === 3) {
-                prompt("Winner")
-                return
-            } else {
-                winArr = []
-            }
-        }
-
-        if(roundCount == 8) {
-            prompt("Its a tie")
-        } else {
-            checkWinArr()   
-        }
-
-        const loopBoard = (arr, previous) => {
-            let current = arr
-            if(arr != '' && current === previous) {
-              winArr.push(arr)
-            }
-            previous = current
-          }
+    
+        if(roundCount == 8) prompt("Its a tie")
 
         const checkRows = (() => {
-            let previous = gameBoard.gameArray[0]
-            for(let i = 0; i < 3; i++){
-                loopBoard(gameBoard.gameArray[i], previous)
-            } 
-            checkWinArr()
-        
-            previous = gameBoard.gameArray[3]
-            for(let i = 3; i < 6; i++) {
-                loopBoard(gameBoard.gameArray[i], previous)
+            if(gameBoard.gameArray[0] != '' && gameBoard.gameArray[1] == gameBoard.gameArray[0] && gameBoard.gameArray[2] == gameBoard.gameArray[1] ||
+               gameBoard.gameArray[3] != '' && gameBoard.gameArray[4] == gameBoard.gameArray[3] && gameBoard.gameArray[5] == gameBoard.gameArray[4] ||
+               gameBoard.gameArray[6] != '' && gameBoard.gameArray[7] == gameBoard.gameArray[6] && gameBoard.gameArray[8] == gameBoard.gameArray[7]) {
+                console.log("Winner")
             }
-            checkWinArr()
-
-            previous = gameBoard.gameArray[6]
-            for(let i = 6; i < 9; i++) {
-                loopBoard(gameBoard.gameArray[i], previous)
-            }
-            checkWinArr()
         })()
 
         const checkColumns = (() => {
-            let previous = gameBoard.gameArray[0]
-            for(let i = 0; i <= 6; i += 3){
-                loopBoard(gameBoard.gameArray[i], previous)
-            } 
-            checkWinArr()
-        
-            previous = gameBoard.gameArray[1]
-            for(let i = 1; i <= 7; i += 3) {
-                loopBoard(gameBoard.gameArray[i], previous)
+            if(gameBoard.gameArray[0] != '' && gameBoard.gameArray[3] == gameBoard.gameArray[0] && gameBoard.gameArray[6] == gameBoard.gameArray[3] ||
+               gameBoard.gameArray[1] != '' && gameBoard.gameArray[4] == gameBoard.gameArray[1] && gameBoard.gameArray[7] == gameBoard.gameArray[4] ||
+               gameBoard.gameArray[2] != '' && gameBoard.gameArray[5] == gameBoard.gameArray[2] && gameBoard.gameArray[8] == gameBoard.gameArray[5]) {
+                console.log("Winner")
             }
-            checkWinArr()
-
-            previous = gameBoard.gameArray[2]
-            for(let i = 2; i <= 8; i += 3) {
-                loopBoard(gameBoard.gameArray[i], previous)
-            }
-            checkWinArr()
         })()
 
         const checkDiagonals = (() => {
-            let previous = gameBoard.gameArray[0]
-            for(let i = 0; i <= 8; i += 4){
-            loopBoard(gameBoard.gameArray[i], previous)
-            } 
-            checkWinArr()
-        
-            previous = gameBoard.gameArray[2]
-            for(let i = 2; i <= 6; i += 2) {
-                loopBoard(gameBoard.gameArray[i], previous)
+            if(gameBoard.gameArray[0] != '' && gameBoard.gameArray[4] == gameBoard.gameArray[0] && gameBoard.gameArray[8] == gameBoard.gameArray[4] ||
+               gameBoard.gameArray[2] != '' && gameBoard.gameArray[4] == gameBoard.gameArray[2] && gameBoard.gameArray[6] == gameBoard.gameArray[4]) {
+                console.log("Winner")
             }
-            checkWinArr()
         })()
     }
 
