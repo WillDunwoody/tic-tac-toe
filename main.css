@@ -1,3 +1,8 @@
+body {
+    background-color: fbfbff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 #container {
     display: flex;
     justify-content: center;
@@ -11,7 +16,6 @@
     grid-template-columns: 200px 200px 200px;
     grid-template-rows: 200px 200px 200px;
     justify-content: center;
-
 }
 
 .gridBox {
@@ -49,9 +53,116 @@
 }
 
 .blue {
-    color: aqua;
+    color: #4bb3fd;
 }
 
 .red {
-    color: red;
+    color: #d73833;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.75);
+    pointer-events: none;
+    opacity: 0;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#popupForm {
+    position: fixed;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 10;
+    border: 3px solid black;
+    border-radius: 20px;
+    background-color: white;
+    height: 500px;
+    width: 450px;
+}
+
+#popupForm.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#playerNumber {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    z-index: 10;
+    height: 500px;
+}
+
+#playerNumber.deactivate {
+    opacity: 0;
+    z-index: 0;
+}
+
+#playerNames {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    height: 400px;
+    margin-top: -495px;
+    opacity: 0;
+    z-index: 0;
+}
+
+#playerNames.active {
+    opacity: 1;
+    z-index: 10;
+}
+
+input {
+    height: 50px;
+    border: 2px solid black;
+}
+
+button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    margin: 30px;
+    height: 100px;
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #d73833;
+    color: white;
+}
+
+#onePlayer {
+    background-color: #4bb3fd;
+}
+
+#twoPlayers {
+    background-color: #d73833;
+}
+
+#declareWinner {
+    text-align: center;
+    margin-top: -450px;
+    opacity: 0;
+}
+
+#declareWinner.active {
+    opacity: 1;
+    z-index: 10;
+}
+
+#playerWinner {
+    font-size: 75px;
+    font-family: Arial;
 }
