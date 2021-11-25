@@ -6,6 +6,10 @@ const gameBoard = (() => {
     return { gameArray }
 })()
 
+const players = (name, choice) => {
+    return {name, choice}
+}
+
 const displayController = (() => {
 
     const playerListener = (() => {
@@ -17,7 +21,7 @@ const displayController = (() => {
         })
 
         twoPlayers.addEventListener('click', function() {
-            document.getElementById("playerNumber").classList.add("deactivate")
+            document.getElementById("amountOfPlayers").classList.add("deactivate")
             document.getElementById("playerNames").classList.add("active")
             accept.addEventListener('click', function() {
                 let playerOneName = document.getElementById("playerOneName").value
@@ -26,6 +30,10 @@ const displayController = (() => {
                 playerO = players(playerTwoName, 'o')
                 document.getElementById("popupForm").classList.remove("active")
                 document.getElementById("playerNames").classList.remove("active")
+                document.getElementById("firstPlayer").classList.add("active")
+                document.getElementById("firstPlayerName").innerText = playerOneName
+                document.getElementById("secondPlayer").classList.add("active")
+                document.getElementById("secondPlayerName").innerText = playerTwoName
             })
         })
 
@@ -37,13 +45,6 @@ const displayController = (() => {
         gridBox.forEach(element => {
             element.addEventListener('click', function() {
                 if(gameBoard.gameArray[this.id] != '') return
-                if(gameController.playerChoice() == 'x') {
-                    element.classList.remove('red')
-                    element.classList.add('blue')
-                } else if(gameController.playerChoice() == 'o') {
-                    element.classList.remove('blue')
-                    element.classList.add('red')
-                }
                 gameBoard.gameArray.splice(this.id, 1, gameController.playerChoice())
                 gameController.playRound()
                 updateDisplay()
@@ -54,16 +55,19 @@ const displayController = (() => {
     const updateDisplay = () => {
         for(let val in gameBoard.gameArray) {
             let gridBox = document.getElementById(val)
-            gridBox.innerText = gameBoard.gameArray[val]
+            if(gameBoard.gameArray[val] === 'x') {
+                gridBox.classList.add('tic-tac')
+            } else if(gameBoard.gameArray[val] === 'o') {
+                gridBox.classList.add('toe')
+            } else if(gameBoard.gameArray[val] === '') {
+                gridBox.classList.remove('tic-tac')
+                gridBox.classList.remove('toe')
+            }
         }
     }
 
     return {updateDisplay}
 })()
-
-const players = (name, choice) => {
-    return {name, choice}
-}
 
 const gameController = (() => {
     let roundCount = 0

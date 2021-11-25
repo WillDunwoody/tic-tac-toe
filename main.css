@@ -5,7 +5,7 @@ body {
 
 #container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
     min-height: 100vh;
@@ -16,14 +16,6 @@ body {
     grid-template-columns: 200px 200px 200px;
     grid-template-rows: 200px 200px 200px;
     justify-content: center;
-}
-
-.gridBox {
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 150px;
 }
 
 .grid0 {
@@ -97,7 +89,7 @@ body {
     transform: translate(-50%, -50%) scale(1);
 }
 
-#playerNumber {
+#amountOfPlayers {
     display: grid;
     justify-content: center;
     align-items: center;
@@ -106,7 +98,7 @@ body {
     height: 500px;
 }
 
-#playerNumber.deactivate {
+#amountOfPlayers.deactivate {
     opacity: 0;
     z-index: 0;
 }
@@ -165,4 +157,44 @@ button {
 #playerWinner {
     font-size: 75px;
     font-family: Arial;
+}
+
+.tic-tac {
+    background-image: url(/images/tic-tac.png);
+    background-size: 200px 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.toe {
+    background-image: url(/images/toe.png);
+    background-size: 170px 170px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#firstPlayer {
+    height: 400px;
+    width: 300px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+#firstPlayer.active {
+    opacity: 1;
+}
+
+#secondPlayer {
+    height: 400px;
+    width: 300px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+#secondPlayer.active {
+    opacity: 1;
 }

@@ -8,7 +8,12 @@
     <title>Tic-Tac-Toe</title>
 </head>
 <body>
+    
     <div id ="container">
+        <div id="firstPlayer">
+            <div id="firstPlayerName"></div>
+            <img src="images/tic-tac.png" id="tictacBackground">
+        </div>
         <div id="display">
             <div id="0" class="gridBox grid0"></div>
             <div id="1" class="gridBox grid1"></div>
@@ -20,9 +25,14 @@
             <div id="7" class="gridBox grid7"></div>
             <div id="8" class="gridBox grid8"></div>
         </div>
+        <div id="secondPlayer">
+            <div id="secondPlayerName"></div>
+            <img src="images/toe.png" id="toeBackground">
+        </div>
     </div>
+    
     <div id="popupForm" class="active">
-        <div id="playerNumber">
+        <div id="amountOfPlayers">
             <button id="onePlayer">1 Player</button>
             <button id="twoPlayers">2 Players</button>
         </div>
