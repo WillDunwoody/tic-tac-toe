@@ -160,14 +160,14 @@ button {
 }
 
 .tic-tac {
-    background-image: url(/images/tic-tac.png);
+    background-image: url(images/tic-tac.png);
     background-size: 200px 200px;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .toe {
-    background-image: url(/images/toe.png);
+    background-image: url(images/toe.png);
     background-size: 170px 170px;
     background-repeat: no-repeat;
     background-position: center;
